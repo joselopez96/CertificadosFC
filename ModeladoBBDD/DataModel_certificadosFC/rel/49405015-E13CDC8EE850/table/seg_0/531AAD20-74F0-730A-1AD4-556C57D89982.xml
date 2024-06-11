@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="531AAD20-74F0-730A-1AD4-556C57D89982" name="Usuarios">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-06-11 16:48:27 UTC</createdTime>
+<ownerDesignName>DataModel_certificadosFC</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="UsuarioID" id="50BE3A17-5BD1-E65E-49F6-3B9921C9D7CB">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-06-11 16:52:51 UTC</createdTime>
+<ownerDesignName>DataModel_certificadosFC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Usuarios_UsuarioID</notNullConstraintName>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="87B75A1B-6350-964E-6E7B-8B73EC99F54B" name="Usuarios_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-06-11 16:52:51 UTC</createdTime>
+<ownerDesignName>DataModel_certificadosFC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50BE3A17-5BD1-E65E-49F6-3B9921C9D7CB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
