@@ -131,3 +131,15 @@ go
 ALTER TABLE usuario
 ADD funciones varchar(200) null
 go
+
+
+create table asistencias(
+usuarioID int,
+primermes int,
+segundomes int,
+tercermes int,
+cuartomes int,
+constraint fk_asis_usu foreign key(usuarioID)
+references usuario(usuarioID)
+)
+go
