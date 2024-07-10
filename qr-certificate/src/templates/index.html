@@ -1,0 +1,45 @@
+{% extends "header.html" %}
+{% block content %}
+
+<div class="text-center my-auto">
+    <h2>Lista de productos</h2>
+    <br>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre de producto</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Fecha de ingreso</th>
+                <th scope="col">Fecha de caducidad</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.Codigo }}</td>
+                <td>{{ item.Nombre }}</td>
+                <td>{{ item.Descripcion }}</td>
+                <td>{{ item.Precio }}</td>
+                <td>{{ item.Stock }}</td>
+                <td>{{ item.Fechaing }}</td>
+                <td>{{ item.Fechacad }}</td>
+                <td><img src="{{ url_for('static',filename='img/'+item.Rutaimg) }}" alt="" width="100" height="100">
+                </td>
+                <td>{{ item.Estado }}</td>
+                <td>{{ item.Codcat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Generador de qr codes</h1>
+    <h2>inserta el link para generar el codigo qr</h2>
+    <div class="container">
+        <form class="form" action="/qrmaker" method="POST" accept-charset="utf-8">
+            <input type="text" name="data" id="data" placeholder="Enter Data To convert" autocomplete="off" />
+            <input type="submit" name="submit" id="submit" value="Submit" />
+        </form>
+        <br>
+        <div class="output">
+            <!--Output here-->
+            <img class="qr" src=" {{url_for('static', filename='img/qrcode.jpg')}} " alt="qrcode" />
+        </div>
+    </div>
+</body>
+
+</html>
