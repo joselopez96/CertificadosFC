@@ -1,0 +1,2115 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/25/2024 5:48:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MUGEN"
+  DTS:CreatorName="MUGEN\Usuario"
+  DTS:DTSID="{C7CB8982-65C8-497D-B118-4A2EDC83743C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Educalma"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{AA619758-36CD-4AC7-AA7A-09D7147A8068}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C4D4E2AD-ED87-4815-8995-BE37745376BB}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Usuario\Desktop\bbddcertificate\Datos de Colaboradores 2024 (respuestas).xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DB_FundacionCalma.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C625CA75-4804-4C16-A7A3-C9BCFF2DA064}"
+      DTS:ObjectName="localhost.DB_FundacionCalma.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=DB_FundacionCalma;Provider=SQLNCLI11.1;Application Name=SSIS-Automatización-{C625CA75-4804-4C16-A7A3-C9BCFF2DA064}localhost.DB_FundacionCalma.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtMVCKWLo0USIMbWLl9h0lwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACBr+mPdkUyeJfgEOdAgkmD7Ty+nvGX8huP+DGuTQ9uIAAAAAAOgAAAAAIAACAAAAA5UxAzc9rylFMOowquG5RPYhflS7H8P41UOG4khpYleSAAAACje+nX/7TKkT2ri1pP8mSmy8oApw/1V9q/hM5bhfy20UAAAABLjQsJtLNqAM3lRU0MrE7ib/9qjS3q+s6G+v6cBtHftKSUCxGBXR+ixaZIZUN4TCWHF8HETs/99CLwapf3CnFc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{63067E4B-7CC5-408C-AE60-30C51051639B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[NombreCompleto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NombreCompleto"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[NombreCompleto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[DNI]"
+                      cachedDataType="r8"
+                      cachedName="DNI"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[DNI]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Genero]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Genero"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Genero]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaNacimiento]"
+                      cachedDataType="date"
+                      cachedName="FechaNacimiento"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[FechaNacimiento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Edad]"
+                      cachedDataType="r8"
+                      cachedName="Edad"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Edad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Telefono]"
+                      cachedDataType="r8"
+                      cachedName="Telefono"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Telefono]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Correo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Correo"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Direccion"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Direccion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Distrito]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Distrito"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Distrito]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Provincia]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Provincia"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Provincia]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Foto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Foto"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Foto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Universidad_Instituto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Universidad_Instituto"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Universidad_Instituto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Correoinstitucional]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Correoinstitucional"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correoinstitucional]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Codigo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Codigo_alumno"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Codigo_alumno]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Carrera"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Carrera]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ModalidadIngreso]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ModalidadIngreso"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[ModalidadIngreso]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Tipo_practicas]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Tipo_practicas"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Tipo_practicas]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Area_UN]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Area_UN"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Area_UN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Subarea]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subarea"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Subarea]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Puesto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Puesto"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Puesto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Fechaing]"
+                      cachedDataType="date"
+                      cachedName="Fechaing"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechaing]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Fechasalida]"
+                      cachedDataType="date"
+                      cachedName="Fechasalida"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechasalida]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Horario]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Horario"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Horario]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Habilidades_Conocimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Habilidades_Conocimiento"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Habilidades_Conocimiento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[expectativas]"
+                      cachedDataType="nText"
+                      cachedName="expectativas"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[expectativas]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Linkedin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Linkedin"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_NombreCompleto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_NombreCompleto]"
+                      name="C_NombreCompleto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[NombreCompleto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_DNI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_DNI]"
+                      name="C_DNI"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[DNI]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Genero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Genero]"
+                      name="C_Genero"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Genero]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_FechaNacimiento]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_FechaNacimiento]"
+                      name="C_FechaNacimiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[FechaNacimiento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Edad]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Edad]"
+                      name="C_Edad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Edad]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Telefono]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Telefono]"
+                      name="C_Telefono"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Telefono]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correo]"
+                      name="C_Correo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Direccion]"
+                      name="C_Direccion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Direccion]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Distrito]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="70"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Distrito]"
+                      name="C_Distrito"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Distrito]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Provincia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="70"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Provincia]"
+                      name="C_Provincia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Provincia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_of Foto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_of Foto]"
+                      name="C_of Foto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Foto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Universidad_Instituto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="70"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Universidad_Instituto]"
+                      name="C_Universidad_Instituto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Universidad_Instituto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correoinstitucional]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correoinstitucional]"
+                      name="C_Correoinstitucional"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correoinstitucional]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Codigo_alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="25"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Codigo_alumno]"
+                      name="C_Codigo_alumno"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Codigo_alumno]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Carrera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="120"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Carrera]"
+                      name="C_Carrera"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Carrera]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_ModalidadIngreso]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_ModalidadIngreso]"
+                      name="C_ModalidadIngreso"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[ModalidadIngreso]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Tipo_practicas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Tipo_practicas]"
+                      name="C_Tipo_practicas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Tipo_practicas]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Area_UN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Area_UN]"
+                      name="C_Area_UN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Area_UN]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Subarea]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="120"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Subarea]"
+                      name="C_Subarea"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Subarea]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Puesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Puesto]"
+                      name="C_Puesto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Puesto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechaing]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechaing]"
+                      name="C_Fechaing"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechaing]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechasalida]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechasalida]"
+                      name="C_Fechasalida"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechasalida]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Horario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Horario]"
+                      name="C_Horario"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Horario]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Habilidades_Conocimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Habilidades_Conocimiento]"
+                      name="C_Habilidades_Conocimiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Habilidades_Conocimiento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Expectativas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Expectativas]"
+                      name="C_Expectativas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[expectativas]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Linkedin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Linkedin]"
+                      name="C_Linkedin"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Linkedin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Linkedin"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]},"-")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(Linkedin,"-")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Educalma"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Educalma"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Unidad de Negocio Educalma$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Educalma.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[NombreCompleto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Nombres y Apellidos (Escriba con mayúscula la primera letra de c]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[NombreCompleto]"
+                      name="NombreCompleto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[DNI]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[DNI]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[DNI]"
+                      name="DNI"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Genero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Género]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Genero]"
+                      name="Genero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[FechaNacimiento]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de nacimiento]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[FechaNacimiento]"
+                      name="FechaNacimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Edad]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Edad Actual]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Edad]"
+                      name="Edad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Telefono]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Número de Contacto]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Telefono]"
+                      name="Telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Correo Electrónico]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correo]"
+                      name="Correo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Dirección]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Direccion]"
+                      name="Direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Distrito]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Distrito ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Distrito]"
+                      name="Distrito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Provincia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Provincia]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Provincia]"
+                      name="Provincia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Foto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subir una fotografía formal]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Foto]"
+                      name="Foto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Universidad_Instituto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Universidad o Instituto (Escriba el nombre completo)# Si no se r]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Universidad_Instituto]"
+                      name="Universidad_Instituto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correoinstitucional]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Contacto de la Universidad o Instituto (Correo electrónico)#  Si]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Correoinstitucional]"
+                      name="Correoinstitucional"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Codigo_alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Código de alumno# Si no se requiere, coloque &quot;-&quot;]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Codigo_alumno]"
+                      name="Codigo_alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Carrera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Carrera]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Carrera]"
+                      name="Carrera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[ModalidadIngreso]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Modalidad de Ingreso]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[ModalidadIngreso]"
+                      name="ModalidadIngreso"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Tipo_practicas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Tipo de practicas (si seleccionó la opción de practicante) ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Tipo_practicas]"
+                      name="Tipo_practicas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Area_UN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Área o Unidad de negocio a la que pertenece]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Area_UN]"
+                      name="Area_UN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Subarea]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subárea a la que pertenece]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Subarea]"
+                      name="Subarea"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Puesto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Puesto Actual]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Puesto]"
+                      name="Puesto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechaing]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de Ingreso]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechaing]"
+                      name="Fechaing"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechasalida]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de Salida]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Fechasalida]"
+                      name="Fechasalida"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Horario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subir horario de actividades en formato de imagen que indique lo]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Horario]"
+                      name="Horario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Habilidades_Conocimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Indica tus habilidades y conocimientos destacados# ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Habilidades_Conocimiento]"
+                      name="Habilidades_Conocimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[expectativas]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[¿Cuáles son tus expectativas de la Fundación Calma?]"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[expectativas]"
+                      name="expectativas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F27]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].Columns[Linkedin]"
+                      name="Linkedin"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Marca temporal]"
+                      dataType="date"
+                      name="Marca temporal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Nombres y Apellidos (Escriba con mayúscula la primera letra de c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombres y Apellidos (Escriba con mayúscula la primera letra de c" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[DNI]"
+                      dataType="r8"
+                      name="DNI" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Género]"
+                      dataType="wstr"
+                      length="255"
+                      name="Género" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de nacimiento]"
+                      dataType="date"
+                      name="Fecha de nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Edad Actual]"
+                      dataType="r8"
+                      name="Edad Actual" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Número de Contacto]"
+                      dataType="r8"
+                      name="Número de Contacto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Correo Electrónico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Correo Electrónico" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Dirección]"
+                      dataType="wstr"
+                      length="255"
+                      name="Dirección" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Distrito ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Distrito " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Provincia]"
+                      dataType="wstr"
+                      length="255"
+                      name="Provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subir una fotografía formal]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subir una fotografía formal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Universidad o Instituto (Escriba el nombre completo)# Si no se r]"
+                      dataType="wstr"
+                      length="255"
+                      name="Universidad o Instituto (Escriba el nombre completo)# Si no se r" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Contacto de la Universidad o Instituto (Correo electrónico)#  Si]"
+                      dataType="wstr"
+                      length="255"
+                      name="Contacto de la Universidad o Instituto (Correo electrónico)#  Si" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Código de alumno# Si no se requiere, coloque &quot;-&quot;]"
+                      dataType="wstr"
+                      length="255"
+                      name="Código de alumno# Si no se requiere, coloque &quot;-&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Carrera]"
+                      dataType="wstr"
+                      length="255"
+                      name="Carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Modalidad de Ingreso]"
+                      dataType="wstr"
+                      length="255"
+                      name="Modalidad de Ingreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Tipo de practicas (si seleccionó la opción de practicante) ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tipo de practicas (si seleccionó la opción de practicante) " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Área o Unidad de negocio a la que pertenece]"
+                      dataType="wstr"
+                      length="255"
+                      name="Área o Unidad de negocio a la que pertenece" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subárea a la que pertenece]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subárea a la que pertenece" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Puesto Actual]"
+                      dataType="wstr"
+                      length="255"
+                      name="Puesto Actual" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de Ingreso]"
+                      dataType="date"
+                      name="Fecha de Ingreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Fecha de Salida]"
+                      dataType="date"
+                      name="Fecha de Salida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Subir horario de actividades en formato de imagen que indique lo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subir horario de actividades en formato de imagen que indique lo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[Indica tus habilidades y conocimientos destacados# ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Indica tus habilidades y conocimientos destacados# " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[¿Cuáles son tus expectativas de la Fundación Calma?]"
+                      dataType="nText"
+                      name="¿Cuáles son tus expectativas de la Fundación Calma?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F27]"
+                      dataType="wstr"
+                      length="255"
+                      name="F27" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F28]"
+                      dataType="wstr"
+                      length="255"
+                      name="F28" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F29]"
+                      dataType="wstr"
+                      length="255"
+                      name="F29" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F30]"
+                      dataType="wstr"
+                      length="255"
+                      name="F30" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F31]"
+                      dataType="wstr"
+                      length="255"
+                      name="F31" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F32]"
+                      dataType="wstr"
+                      length="255"
+                      name="F32" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output].ExternalColumns[F33]"
+                      dataType="wstr"
+                      length="255"
+                      name="F33" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Nombres y Apellidos (Escriba con mayúscula la primera letra de c]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Nombres y Apellidos (Escriba con mayúscula la primera letra de c]"
+                      name="Nombres y Apellidos (Escriba con mayúscula la primera letra de c" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[DNI]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[DNI]"
+                      name="DNI" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Género]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Género]"
+                      name="Género" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de nacimiento]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de nacimiento]"
+                      name="Fecha de nacimiento" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Edad Actual]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Edad Actual]"
+                      name="Edad Actual" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Número de Contacto]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Número de Contacto]"
+                      name="Número de Contacto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Correo Electrónico]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Correo Electrónico]"
+                      name="Correo Electrónico" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Dirección]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Dirección]"
+                      name="Dirección" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Distrito ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Distrito ]"
+                      name="Distrito " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Provincia]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Provincia]"
+                      name="Provincia" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subir una fotografía formal]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subir una fotografía formal]"
+                      name="Subir una fotografía formal" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Universidad o Instituto (Escriba el nombre completo)# Si no se r]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Universidad o Instituto (Escriba el nombre completo)# Si no se r]"
+                      name="Universidad o Instituto (Escriba el nombre completo)# Si no se r" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Contacto de la Universidad o Instituto (Correo electrónico)#  Si]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Contacto de la Universidad o Instituto (Correo electrónico)#  Si]"
+                      name="Contacto de la Universidad o Instituto (Correo electrónico)#  Si" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Código de alumno# Si no se requiere, coloque &quot;-&quot;]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Código de alumno# Si no se requiere, coloque &quot;-&quot;]"
+                      name="Código de alumno# Si no se requiere, coloque &quot;-&quot;" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Carrera]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Carrera]"
+                      name="Carrera" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Modalidad de Ingreso]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Modalidad de Ingreso]"
+                      name="Modalidad de Ingreso" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Tipo de practicas (si seleccionó la opción de practicante) ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Tipo de practicas (si seleccionó la opción de practicante) ]"
+                      name="Tipo de practicas (si seleccionó la opción de practicante) " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Área o Unidad de negocio a la que pertenece]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Área o Unidad de negocio a la que pertenece]"
+                      name="Área o Unidad de negocio a la que pertenece" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subárea a la que pertenece]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subárea a la que pertenece]"
+                      name="Subárea a la que pertenece" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Puesto Actual]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Puesto Actual]"
+                      name="Puesto Actual" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de Ingreso]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de Ingreso]"
+                      name="Fecha de Ingreso" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de Salida]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Fecha de Salida]"
+                      name="Fecha de Salida" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subir horario de actividades en formato de imagen que indique lo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Subir horario de actividades en formato de imagen que indique lo]"
+                      name="Subir horario de actividades en formato de imagen que indique lo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Indica tus habilidades y conocimientos destacados# ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[Indica tus habilidades y conocimientos destacados# ]"
+                      name="Indica tus habilidades y conocimientos destacados# " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[¿Cuáles son tus expectativas de la Fundación Calma?]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[¿Cuáles son tus expectativas de la Fundación Calma?]"
+                      name="¿Cuáles son tus expectativas de la Fundación Calma?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[F27]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[F27]"
+                      name="F27" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Educalma.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[t_educalma]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DB_FundacionCalma.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DB_FundacionCalma.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_NombreCompleto]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="C_NombreCompleto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NombreCompleto]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_NombreCompleto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_DNI]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="C_DNI"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DNI]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_DNI]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Genero]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="C_Genero"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Genero]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_FechaNacimiento]"
+                      cachedDataType="date"
+                      cachedName="C_FechaNacimiento"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_FechaNacimiento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Edad]"
+                      cachedDataType="r8"
+                      cachedName="C_Edad"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Edad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Telefono]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="C_Telefono"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Telefono]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Correo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="C_Correo"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correo]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="C_Direccion"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Direccion]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Direccion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Provincia]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="C_Provincia"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Provincia]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Provincia]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_of Foto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="C_of Foto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Foto]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_of Foto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Universidad_Instituto]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="C_Universidad_Instituto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Universidad_Instituto]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Universidad_Instituto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Correoinstitucional]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="C_Correoinstitucional"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correoinstitucional]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Correoinstitucional]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Codigo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="C_Codigo_alumno"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo_alumno]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Codigo_alumno]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="120"
+                      cachedName="C_Carrera"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Carrera]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Carrera]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_ModalidadIngreso]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="C_ModalidadIngreso"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadIngreso]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_ModalidadIngreso]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Tipo_practicas]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="C_Tipo_practicas"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_practicas]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Tipo_practicas]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Area_UN]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="C_Area_UN"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Area_UN]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Area_UN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Subarea]"
+                      cachedDataType="wstr"
+                      cachedLength="120"
+                      cachedName="C_Subarea"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Subarea]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Subarea]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Puesto]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="C_Puesto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Puesto]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Puesto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Fechaing]"
+                      cachedDataType="date"
+                      cachedName="C_Fechaing"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fechaing]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechaing]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Fechasalida]"
+                      cachedDataType="date"
+                      cachedName="C_Fechasalida"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fechasalida]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Fechasalida]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Habilidades_Conocimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="C_Habilidades_Conocimiento"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Habilidades_Conocimiento]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Habilidades_Conocimiento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Linkedin]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="C_Linkedin"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Linkedin]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Linkedin]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Horario]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="C_Horario"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Horario]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Horario]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Distrito]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="C_Distrito"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distrito ]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Distrito]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[C_Expectativas]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="C_Expectativas"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Expectativas]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[C_Expectativas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NombreCompleto]"
+                      dataType="wstr"
+                      length="100"
+                      name="NombreCompleto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DNI]"
+                      dataType="wstr"
+                      length="8"
+                      name="DNI" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                      dataType="wstr"
+                      length="12"
+                      name="Genero" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaNacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
+                      dataType="i4"
+                      name="Edad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                      dataType="wstr"
+                      length="12"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correo]"
+                      dataType="wstr"
+                      length="100"
+                      name="Correo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Direccion]"
+                      dataType="wstr"
+                      length="150"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Provincia]"
+                      dataType="wstr"
+                      length="70"
+                      name="Provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Foto]"
+                      dataType="wstr"
+                      length="255"
+                      name="Foto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Universidad_Instituto]"
+                      dataType="wstr"
+                      length="70"
+                      name="Universidad_Instituto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correoinstitucional]"
+                      dataType="wstr"
+                      length="100"
+                      name="Correoinstitucional" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo_alumno]"
+                      dataType="wstr"
+                      length="25"
+                      name="Codigo_alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Carrera]"
+                      dataType="wstr"
+                      length="120"
+                      name="Carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadIngreso]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadIngreso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_practicas]"
+                      dataType="wstr"
+                      length="30"
+                      name="Tipo_practicas" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Area_UN]"
+                      dataType="wstr"
+                      length="80"
+                      name="Area_UN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Subarea]"
+                      dataType="wstr"
+                      length="120"
+                      name="Subarea" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Puesto]"
+                      dataType="wstr"
+                      length="80"
+                      name="Puesto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fechaing]"
+                      dataType="dbTimeStamp"
+                      name="Fechaing" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fechasalida]"
+                      dataType="dbTimeStamp"
+                      name="Fechasalida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Horario]"
+                      dataType="wstr"
+                      length="255"
+                      name="Horario" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Habilidades_Conocimiento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Habilidades_Conocimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Linkedin]"
+                      dataType="wstr"
+                      length="80"
+                      name="Linkedin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Distrito ]"
+                      dataType="wstr"
+                      length="70"
+                      name="Distrito " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Expectativas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Expectativas" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Educalma.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="227.5,126.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="418.5,274.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="81,141.5" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Data Flow Task\Educalma"
+          TopLeft="62,64" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="233,206" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="310,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="194,26.5"
+              Start="0,0"
+              End="194,19">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.25"
+                    Point2="0,13.25"
+                    Point3="4,13.25" />
+                  <mssgle:LineSegment
+                    End="190,13.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="190,13.25"
+                    Point2="194,13.25"
+                    Point3="194,17.25" />
+                  <mssgle:LineSegment
+                    End="194,19" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="124,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,35.5"
+              Start="0,0"
+              End="35,28">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.75"
+                    Point2="0,17.75"
+                    Point3="4,17.75" />
+                  <mssgle:LineSegment
+                    End="31,17.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,17.75"
+                    Point2="35,17.75"
+                    Point3="35,21.75" />
+                  <mssgle:LineSegment
+                    End="35,28" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="237,162.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73,43.5"
+              Start="0,0"
+              End="73,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69,0"
+                    Point2="73,0"
+                    Point3="73,4" />
+                  <mssgle:LineSegment
+                    End="73,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Educalma">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
